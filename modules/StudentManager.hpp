@@ -1,5 +1,5 @@
-#include"data_structures/DynamicArray.hpp"
-#include"models/Student.hpp"
+#include"../data_structures/DynamicArray.hpp"
+#include"../models/Student.hpp"
 using namespace std;
 
 class StudentManager
@@ -13,5 +13,4 @@ class StudentManager
         Student s = {rollNo,name,dept,cgpa};
         studentRecords.push_back(s);
     }
-
 };

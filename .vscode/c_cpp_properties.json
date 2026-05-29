@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/data_structures",
-                "${workspaceFolder}/models"
+                "${workspaceFolder}/models",
+                "${workspaceFolder}/utils"
             ],
             "defines": [
                 "_DEBUG",
