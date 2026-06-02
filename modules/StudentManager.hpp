@@ -18,8 +18,11 @@ class StudentManager
 
     void addStudent(int rollNo, string name, string dept, float cgpa)
     {
+        cout << "Adding student: " << rollNo << " - " << name << "\n";
         Student s = {rollNo,name,dept,cgpa};
+        cout << "Student object created\n";
         studentRecords.push_back(s);
+        cout << "Student added to records\n";
     }
 
     void saveSystemState()
@@ -58,11 +61,13 @@ class StudentManager
         if(ptr == NULL)
         {
             cout<<"Error: Student with " <<rollNo <<" not found!\n"; 
+            return;
         }
 
         if(nCGPA < 0.0f || nCGPA > 4.0f)
         {
             cout<<"Update Error: Invalid CGPA value.\n";
+            return;
         }
 
         ptr->cgpa = nCGPA;
@@ -86,6 +91,7 @@ class StudentManager
         if(targetIndex == -1)
         {
             cout<<"Error: Student with Roll No " <<rollNo <<" not found!\n";
+            return;
         }
  
         studentRecords.removeAt(targetIndex);
@@ -97,6 +103,7 @@ class StudentManager
         if(ptr == NULL)
         {
             cout<<"Error! Student record not found!\n";
+            return;
         }
 
         cout<<"\n===================================";

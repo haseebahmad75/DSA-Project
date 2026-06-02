@@ -13,7 +13,8 @@ class DynamicArray
 
     void resize()
     {
-        T *temp = new T[capacity * 2]; // new double-sized array
+        capacity = capacity * 2;  // Update capacity first!
+        T *temp = new T[capacity]; // new double-sized array
         for (int i = 0; i < size; i++)
         {
             temp[i] = arr[i];

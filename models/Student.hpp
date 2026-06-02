@@ -1,12 +1,15 @@
 #pragma once
 #include<string>
-using namespace std;
+#include"../data_structures/CourseLinkedList.hpp"
 struct Student
 {
     int rollNo;
     string name;
     string department;
     float cgpa;
+
+    // Every student have their own list of courses
+    CourseLinkedList registeredCourses;
 
     // initializer list initializes values during object creation
      

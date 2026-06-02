@@ -1,2 +1,6 @@
-6,Haseeb,Computer Science,3.5
 8,Faiq,Computer Science,2.5
+2,Saddique,Computer Science,3.5
+4,Ahmad,Computer Science,3.7
+6,Haseeb,Computer Science,3.5
+8,Faiq,Computer Science,3.4
+9,Faizan,Computer Science,3.9
