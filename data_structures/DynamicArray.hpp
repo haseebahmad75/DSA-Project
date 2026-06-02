@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 #include<stdexcept> // gives standard exception classes
 using namespace std;

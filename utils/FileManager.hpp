@@ -1,13 +1,15 @@
+#pragma once 
 #include<iostream>
 #include<fstream>
+#include<sstream>
 #include"../data_structures/DynamicArray.hpp"
-#include"../modules/StudentManager.hpp"
+#include"../models/Student.hpp"
 using namespace std;
 
 class FileManager
 {
     public:
-    inline bool saveStudents(string fileName, DynamicArray<Student> & students)
+    inline static bool saveStudents(string fileName, DynamicArray<Student> & students)
     {
         ofstream file(fileName);
         if(!file.is_open())
@@ -19,25 +21,28 @@ class FileManager
         for(int i = 0; i < students.getSize(); i++)
         {
             Student s = students.get(i);
-            file << "s.rollNo" <<","
-                 << "s.name" <<","
-                 <<"s.department" <<","
-                 <<"s.cgpa" <<"\n";
+            file << s.rollNo <<","
+                 << s.name <<","
+                 << s.department <<","
+                 << s.cgpa <<"\n";
         }
         file.close();
         return true;
     }
 
-    inline bool loadStudents(string fileName, DynamicArray<Student> & students)
+    inline static bool loadStudents(string fileName, DynamicArray<Student> & students)
     {
         ifstream file(fileName);
         if(!file.is_open())
         {
-            cout<<"Error: No data file found for" <<fileName;
+            cout<<"Error: No data file found for " <<fileName;
             return false;
         }
 
         string line;
+        // Skip the header line
+        getline(file, line);
+        
         while(getline(file,line))
         {
             if(line.empty()) continue;
@@ -57,7 +62,7 @@ class FileManager
                 students.push_back(loadedStudent);
             }
         }
-        file.close;
+        file.close();
         return true;
     }
 };
