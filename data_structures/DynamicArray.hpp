@@ -49,6 +49,21 @@ class DynamicArray
         return arr[index];
     }
 
+    void removeAt(int index)
+    {
+        if(index < 0 || index >= size)
+        {
+            throw out_of_range("Index is out of bounds for deletion.");
+        }
+
+        for(int i = index; i < size - 1; i++)
+        {
+            arr[i] = arr[i+1];
+        }
+        
+        size--;
+    }
+
     int getSize()
     {
         return size;

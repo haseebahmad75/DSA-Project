@@ -26,4 +26,85 @@ class StudentManager
     {
         FileManager::saveStudents(fileName, studentRecords);
     }
+
+    Student* SearchByRollNo(int rollNo) // returns the address of that student
+    {
+        for(int i = 0; i < studentRecords.getSize(); i++)
+        {
+            if(studentRecords.get(i).rollNo == rollNo)
+            {
+                return &(studentRecords.get(i));
+            }
+        }
+        return nullptr;
+    }
+
+    Student * SearchByName(string name)
+    {
+        for(int i = 0; i < studentRecords.getSize(); i++)
+        {
+            if(studentRecords.get(i).name == name)
+            {
+                return &(studentRecords.get(i));
+            }
+        }
+        return nullptr;
+    }
+
+    void UpdateCGPA(int rollNo, float nCGPA)
+    {
+        Student * ptr = SearchByRollNo(rollNo);
+
+        if(ptr == NULL)
+        {
+            cout<<"Error: Student with " <<rollNo <<" not found!\n"; 
+        }
+
+        if(nCGPA < 0.0f || nCGPA > 4.0f)
+        {
+            cout<<"Update Error: Invalid CGPA value.\n";
+        }
+
+        ptr->cgpa = nCGPA;
+        cout<<"Success: CGPA for " <<ptr->name <<" updated to " <<nCGPA <<".\n";
+
+    }
+
+    void DeleteStudent(int rollNo)
+    {
+        int targetIndex = -1;
+
+        for(int i = 0; i < studentRecords.getSize(); i++) // gets the index number of where the student with that rollNo is stored
+        {
+            if(studentRecords.get(i).rollNo == rollNo)
+            {
+                targetIndex = i;
+                break;
+            }
+        }
+
+        if(targetIndex == -1)
+        {
+            cout<<"Error: Student with Roll No " <<rollNo <<" not found!\n";
+        }
+ 
+        studentRecords.removeAt(targetIndex);
+        cout<<"Success: Student with Roll No " <<rollNo <<" has been deleted!\n";
+    }
+
+    void PrintStudentInfo(Student* ptr)
+    {
+        if(ptr == NULL)
+        {
+            cout<<"Error! Student record not found!\n";
+        }
+
+        cout<<"\n===================================";
+        cout<<"\nRoll Number: " <<ptr->rollNo;
+        cout<<"\nName: " <<ptr->name;
+        cout<<"\nDepartment: " <<ptr->department;
+        cout<<"\nCGPA: " <<ptr->cgpa;
+        cout<<"\n===================================\n";
+    }
+
 };

@@ -1,2 +1,2 @@
 6,Haseeb,Computer Science,3.5
-8,Faiq,Computer Science,3.4
+8,Faiq,Computer Science,2.5
