@@ -11,12 +11,12 @@ class StudentManager
     const string fileName = "D:/Smart University System/students.txt";
 
     public:
-    void initSystem()
+    void InitSystem()
     {
-        FileManager::loadStudents(fileName,studentRecords);
+        FileManager::LoadStudents(fileName,studentRecords);
     }
 
-    void addStudent(int rollNo, string name, string dept, float cgpa)
+    void AddStudent(int rollNo, string name, string dept, float cgpa)
     {
         cout << "Adding student: " << rollNo << " - " << name << "\n";
         Student s = {rollNo,name,dept,cgpa};
@@ -25,9 +25,9 @@ class StudentManager
         cout << "Student added to records\n";
     }
 
-    void saveSystemState()
+    void SaveSystemState()
     {
-        FileManager::saveStudents(fileName, studentRecords);
+        FileManager::SaveStudents(fileName, studentRecords);
     }
 
     Student* SearchByRollNo(int rollNo) // returns the address of that student

@@ -9,7 +9,7 @@ using namespace std;
 class FileManager
 {
     public:
-    inline static bool saveStudents(string fileName, DynamicArray<Student> & students)
+    inline static bool SaveStudents(string fileName, DynamicArray<Student> & students)
     {
         ofstream file(fileName);
         if(!file.is_open())
@@ -30,7 +30,7 @@ class FileManager
         return true;
     }
 
-    inline static bool loadStudents(string fileName, DynamicArray<Student> & students)
+    inline static bool LoadStudents(string fileName, DynamicArray<Student> & students)
     {
         ifstream file(fileName);
         if(!file.is_open())

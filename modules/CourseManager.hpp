@@ -15,7 +15,7 @@ class CourseManager
     CourseManager(StudentManager & manager) : sm(manager) {}
     
     // Register a course to a specific student
-    void registerCourseForStudent(int rollNo, string code, string name)
+    void RegisterCourseForStudent(int rollNo, string code, string name)
     {
         Student * stu = sm.SearchByRollNo(rollNo);
 
@@ -50,7 +50,7 @@ class CourseManager
         }
     }
 
-    void viewStudentCourses(int rollNo)
+    void ViewStudentCourses(int rollNo)
     {
         Student * stu = sm.SearchByRollNo(rollNo);
         if(stu == NULL)
