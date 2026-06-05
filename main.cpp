@@ -1,22 +1,32 @@
 #include"modules/StudentManager.hpp"
 #include"modules/CourseManager.hpp"
 #include"modules/LibraryManager.hpp"
+#include"modules/ComplaintManager.hpp"
 using namespace std;
 
 int main()
 {
-    LibraryManager lm;
+    ComplaintManager cm;
 
-    lm.AddNewBook(500, "The C++ Programming Language", "Bjarne Stroustrup");
-    lm.AddNewBook(200, "Introduction to Algorithms", "CLRS");
-    lm.AddNewBook(800, "Design Patterns", "Gang of Four");
-    lm.AddNewBook(100, "Clean Code", "Robert C. Martin");
+    cm.FileComplaint(6, "Fans are not working in LT.");
+    cm.FileComplaint(8, "University gates are closed.");
+    cm.FileComplaint(10, "No cold drinking water available in scorching heat.");
 
-    lm.ViewLibraryCatalog();
+    cm.resolveComplaint();
 
-    lm.IssueBook(100);
-    lm.IssueBook(200);
+    cm.IssueToken();
+    cm.IssueToken();
+    cm.IssueToken();
+    cm.IssueToken();
+    cm.IssueToken();
 
-    lm.ReturnBook(100);
-    lm.IssueBook(100);
+    cm.ViewTokenQueue();
+
+    cm.serveNextToken();
+    cm.serveNextToken();
+
+    cm.ViewTokenQueue();
+
+
+
 }

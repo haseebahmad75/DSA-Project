@@ -22,6 +22,11 @@ class ComplaintQueue
         }
     }
 
+    bool isEmpty()
+    {
+        return front == nullptr;
+    }
+
     void Enqueue(int id, int rollNo, string desc)
     {
         ComplaintNode * newNode = new ComplaintNode(id, rollNo, desc);
@@ -34,7 +39,7 @@ class ComplaintQueue
         rear = newNode;
     }
 
-    void Dequeue()
+    bool Dequeue()
     {
         if(isEmpty()) return false;
 

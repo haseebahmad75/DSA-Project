@@ -6,6 +6,7 @@ using namespace std;
 
 class ComplaintNode
 {
+    public:
     int complaintID;
     int stuRollNo;
     string desc;
