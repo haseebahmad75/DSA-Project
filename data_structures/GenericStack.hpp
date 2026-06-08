@@ -10,9 +10,10 @@ struct StackNode
     T data;
     StackNode * next;
 
-    StackNode(T val) : data(val), next(nullptr) {}
+    StackNode(const T& val) : data(val), next(nullptr) {}
 };
 
+template <typename T>
 class GenericStack
 {
     private:
@@ -39,9 +40,9 @@ class GenericStack
         return currentSize;
     }
 
-    void Push(int val)
+    void push(const T& val)
     {
-        StackNode<T> * newNode = new StackNode<T>(val);
+        StackNode<T>* newNode = new StackNode<T>(val);
         newNode->next = topNode;
         topNode = newNode;
         currentSize++;
