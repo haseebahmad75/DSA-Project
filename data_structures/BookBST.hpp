@@ -57,7 +57,7 @@ class BookBST
         
         DisplayInOrder(node->left);
 
-        cout<<"Book ID: " <<node->bookID <<" | Title: " <<node->bookID 
+        cout<<"Book ID: " <<node->bookID <<" | Title: " <<node->title 
             <<" | Author: " <<node->author <<" | Status: " <<(node->isIssued ? "Borrowed " : "Available ") <<"\n";
         
         DisplayInOrder(node->right);

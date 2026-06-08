@@ -12,11 +12,11 @@ class ComplaintNode
     string desc;
     ComplaintNode * next;
 
-    ComplaintNode(int id, int rollNo, string desc)
+    ComplaintNode(int id, int rollNo, string description)
     {
         complaintID = id;
         stuRollNo = rollNo;
-        desc = desc;
+        desc = description;
         next = nullptr;
     }
 };

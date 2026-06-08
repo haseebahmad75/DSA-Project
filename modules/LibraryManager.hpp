@@ -22,7 +22,7 @@ class LibraryManager
         Book * targetBook = book.Search(id);
         if(targetBook == NULL)
         {
-            cout<<"Library Error: Book with ID " <<targetBook->bookID <<" does not exist in our inventory\n";
+            cout<<"Library Error: Book with ID " <<id <<" does not exist in our inventory\n";
             return;
         }
 
@@ -56,6 +56,24 @@ class LibraryManager
         cout << "========================================================\n";
         book.DisplayCatalog();
         cout << "========================================================\n";
+    }
+
+    void SearchBook(int id)
+    {
+        Book * b = book.Search(id);
+        
+        if(b == nullptr)
+        {
+            cout << "[ERROR] Book with ID " << id << " not found in library.\n";
+            return;
+        }
+        
+        cout << "\n--- Book Details ---\n";
+        cout << "Book ID    : " << b->bookID << "\n";
+        cout << "Title      : " << b->title << "\n";
+        cout << "Author     : " << b->author << "\n";
+        cout << "Status     : " << (b->isIssued ? "Borrowed" : "Available") << "\n";
+        cout << "--------------------\n";
     }
 };
 
