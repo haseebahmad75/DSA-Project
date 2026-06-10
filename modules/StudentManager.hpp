@@ -51,7 +51,9 @@ class StudentManager
             return;
         }
 
+        // stores the action in lastAction by popping it from undoStack, that was storing all the added students
         StudentAction lastAction = undoStack.pop();
+        
         // pushing it in redoStack, if the user wants to do redo after undo
         redoStack.push(lastAction);
 

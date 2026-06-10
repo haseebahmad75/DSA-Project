@@ -6,13 +6,13 @@
 
 class CourseLinkedList
 {
-    private:
+    public:  // Changed from private to public so CourseManager can access head
     Node * head;
 
     public:
     CourseLinkedList() : head(nullptr) {}
     
-    // Copy constructor - needed when Student objects are copied
+    // Copy constructor - needed when Student objects are copied - deep copy, copy the data of member variables and allocate it on new memory
     CourseLinkedList(const CourseLinkedList& other) : head(nullptr)
     {
         if(other.head == nullptr) return;
