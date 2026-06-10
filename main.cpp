@@ -108,7 +108,11 @@ void handleStudentManagement(StudentManager& sm) {
         cout << "4. Update Student CGPA\n";
         cout << "5. Delete Student Record\n";
         cout << "6. Display Student Information\n";
-        cout << "7. Back to Main Menu\n";
+        cout << "--------------------------------------------------\n";
+        cout << "7. [UNDO] Undo Last Student Action \n";
+        cout << "8. [REDO] Redo Last Student Action \n";
+        cout << "--------------------------------------------------\n";
+        cout << "9. Back to Main Menu\n";
         cout << "==================================================\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -242,11 +246,25 @@ void handleStudentManagement(StudentManager& sm) {
             }
             
             case 7:
+                // Undo Student Action
+                cout << "\n--- UNDO Student Action ---\n";
+                sm.executeUndo();
+                pauseScreen();
+                break;
+            
+            case 8:
+                // Redo Student Action
+                cout << "\n--- REDO Student Action ---\n";
+                sm.executeRedo();
+                pauseScreen();
+                break;
+            
+            case 9:
                 backToMain = true;
                 break;
                 
             default:
-                cout << "\n[ERROR] Invalid choice! Please select 1-7.\n";
+                cout << "\n[ERROR] Invalid choice! Please select 1-9.\n";
                 pauseScreen();
         }
     }
@@ -263,7 +281,11 @@ void handleCourseManagement(CourseManager& cm, StudentManager& sm) {
         cout << "1. Register Course for Student\n";
         cout << "2. Drop Course for Student\n";
         cout << "3. View Student's Registered Courses\n";
-        cout << "4. Back to Main Menu\n";
+        cout << "--------------------------------------------------\n";
+        cout << "4. [UNDO] Undo Last Course Action \n";
+        cout << "5. [REDO] Redo Last Course Action \n";
+        cout << "--------------------------------------------------\n";
+        cout << "6. Back to Main Menu\n";
         cout << "==================================================\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -353,11 +375,25 @@ void handleCourseManagement(CourseManager& cm, StudentManager& sm) {
             }
             
             case 4:
+                // Undo Course Action
+                cout << "\n--- UNDO Course Action ---\n";
+                cm.executeUndo();
+                pauseScreen();
+                break;
+            
+            case 5:
+                // Redo Course Action
+                cout << "\n--- REDO Course Action ---\n";
+                cm.executeRedo();
+                pauseScreen();
+                break;
+            
+            case 6:
                 backToMain = true;
                 break;
                 
             default:
-                cout << "\n[ERROR] Invalid choice! Please select 1-4.\n";
+                cout << "\n[ERROR] Invalid choice! Please select 1-6.\n";
                 pauseScreen();
         }
     }
@@ -544,13 +580,17 @@ void handleComplaintTokenManagement(ComplaintManager& cpm) {
         cout << "       COMPLAINT SYSTEM (FIFO Queue)              \n";
         cout << "1. File New Complaint\n";
         cout << "2. Resolve Next Complaint\n";
+        cout << "3. View Active Complaints\n";
+        cout << "--------------------------------------------------\n";
+        cout << "4. [UNDO] Undo Last Complaint Action \n";
+        cout << "5. [REDO] Redo Last Complaint Action \n";
         cout << "--------------------------------------------------\n";
         cout << "       TOKEN SYSTEM (Circular Queue)              \n";
-        cout << "3. Issue New Token\n";
-        cout << "4. Serve Next Token\n";
-        cout << "5. View Active Token Queue\n";
+        cout << "6. Issue New Token\n";
+        cout << "7. Serve Next Token\n";
+        cout << "8. View Active Token Queue\n";
         cout << "--------------------------------------------------\n";
-        cout << "6. Back to Main Menu\n";
+        cout << "9. Back to Main Menu\n";
         cout << "==================================================\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -595,6 +635,28 @@ void handleComplaintTokenManagement(ComplaintManager& cpm) {
             }
             
             case 3: {
+                // View Active Complaints
+                cout << "\n--- Active Complaints ---\n";
+                cpm.viewActiceComplaints();
+                pauseScreen();
+                break;
+            }
+            
+            case 4:
+                // Undo Complaint Action
+                cout << "\n--- UNDO Complaint Action ---\n";
+                cpm.executeUndo();
+                pauseScreen();
+                break;
+            
+            case 5:
+                // Redo Complaint Action
+                cout << "\n--- REDO Complaint Action ---\n";
+                cpm.executeRedo();
+                pauseScreen();
+                break;
+            
+            case 6: {
                 // Issue Token
                 cout << "\n--- Issue New Token ---\n";
                 cout << "[ACTION] Generating token number...\n";
@@ -604,7 +666,7 @@ void handleComplaintTokenManagement(ComplaintManager& cpm) {
                 break;
             }
             
-            case 4: {
+            case 7: {
                 // Serve Token
                 cout << "\n--- Serve Next Token ---\n";
                 cout << "[ACTION] Calling next token from queue...\n";
@@ -613,7 +675,7 @@ void handleComplaintTokenManagement(ComplaintManager& cpm) {
                 break;
             }
             
-            case 5: {
+            case 8: {
                 // View Token Queue
                 cout << "\n--- Active Token Queue ---\n";
                 cout << "[INFO] Tokens are served in FIFO order (First Come First Served)\n\n";
@@ -622,12 +684,12 @@ void handleComplaintTokenManagement(ComplaintManager& cpm) {
                 break;
             }
             
-            case 6:
+            case 9:
                 backToMain = true;
                 break;
                 
             default:
-                cout << "\n[ERROR] Invalid choice! Please select 1-6.\n";
+                cout << "\n[ERROR] Invalid choice! Please select 1-9.\n";
                 pauseScreen();
         }
     }
