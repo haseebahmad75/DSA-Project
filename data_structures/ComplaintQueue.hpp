@@ -54,6 +54,56 @@ class ComplaintQueue
         return true;
     }
 
+    // Remove from rear (last added) - for undo functionality
+    bool DequeueFromRear()
+    {
+        if(isEmpty()) return false;
+
+        // Special case: only one element
+        if(front == rear)
+        {
+            delete front;
+            front = rear = nullptr;
+            return true;
+        }
+
+        // Traverse to find second-to-last node
+        ComplaintNode * current = front;
+        while(current->next != rear)
+        {
+            current = current->next;
+        }
+
+        // Delete the last node (rear)
+        delete rear;
+        rear = current;
+        rear->next = nullptr;
+        
+        return true;
+    }
+
+    void Display() const 
+    {
+        if (front == nullptr) 
+        {
+            cout << "[Complaint Queue] No active complaints in the system.\n";
+            return;
+        }
+
+        cout << "\n--- Current Active Complaints Queue ---\n";
+        ComplaintNode* temp = front;
+        
+        while (temp != nullptr) 
+        {
+            cout << "ID: " << temp->complaintID
+                  << " | Student Roll No: " << temp->stuRollNo 
+                  << " | Details: " << temp->desc << "\n";
+            
+            temp = temp->next;
+        }
+        cout << "---------------------------------------\n";
+    }
+
     ComplaintNode * getFront()
     {
         return front;
