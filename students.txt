@@ -1,4 +1,6 @@
-102,Bob Jones,Electrical Engineering,3.3
-12,Abid,Computer Science,3.9
 2,Saddique,Computer Science,3.6
 4,Ahmad,Computer Science,3.7
+2,Ahmad,Computer Science,3.5
+8,Faiq,Computer Science,3.6
+34,Junaid,Computer Science,3.7
+48,Usman,Computer Science,3.9

@@ -108,11 +108,14 @@ void handleStudentManagement(StudentManager& sm) {
         cout << "4. Update Student CGPA\n";
         cout << "5. Delete Student Record\n";
         cout << "6. Display Student Information\n";
+        cout << "7. Display All Students\n";
+        cout << "8. Sort Students by Roll Number (Bubble Sort)\n";
+        cout << "9. Sort Students by CGPA (Selection Sort)\n";
         cout << "--------------------------------------------------\n";
-        cout << "7. [UNDO] Undo Last Student Action \n";
-        cout << "8. [REDO] Redo Last Student Action \n";
+        cout << "10. [UNDO] Undo Last Student Action \n";
+        cout << "11. [REDO] Redo Last Student Action \n";
         cout << "--------------------------------------------------\n";
-        cout << "9. Back to Main Menu\n";
+        cout << "12. Back to Main Menu\n";
         cout << "==================================================\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -245,26 +248,66 @@ void handleStudentManagement(StudentManager& sm) {
                 break;
             }
             
-            case 7:
+            case 7: {
+                // Display All Students
+                cout << "\n--- All Students in System ---\n";
+                sm.DisplayAllStudents();
+                pauseScreen();
+                break;
+            }
+            
+            case 8: {
+                // Sort Students by Roll Number
+                cout << "\n--- Sort Students by Roll Number ---\n";
+                
+                cout << "\n[BEFORE SORTING]\n";
+                sm.DisplayAllStudents();
+                
+                sm.BubbleSortByRollNo();
+                
+                cout << "\n[AFTER SORTING]\n";
+                sm.DisplayAllStudents();
+                
+                pauseScreen();
+                break;
+            }
+            
+            case 9: {
+                // Sort Students by CGPA (Selection Sort)
+                cout << "\n--- Sort Students by CGPA (Highest to Lowest) ---\n";
+                
+                cout << "\n[BEFORE SORTING]\n";
+                sm.DisplayAllStudents();
+                
+                sm.SelectionSortByCGPA();
+                
+                cout << "\n[AFTER SORTING]\n";
+                sm.DisplayAllStudents();
+                
+                pauseScreen();
+                break;
+            }
+            
+            case 10:
                 // Undo Student Action
                 cout << "\n--- UNDO Student Action ---\n";
                 sm.executeUndo();
                 pauseScreen();
                 break;
             
-            case 8:
+            case 11:
                 // Redo Student Action
                 cout << "\n--- REDO Student Action ---\n";
                 sm.executeRedo();
                 pauseScreen();
                 break;
             
-            case 9:
+            case 12:
                 backToMain = true;
                 break;
                 
             default:
-                cout << "\n[ERROR] Invalid choice! Please select 1-9.\n";
+                cout << "\n[ERROR] Invalid choice! Please select 1-12.\n";
                 pauseScreen();
         }
     }

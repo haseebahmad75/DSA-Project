@@ -3,6 +3,7 @@
 #include"../data_structures/GenericStack.hpp"
 #include"../utils/FileManager.hpp"
 #include"../models/Student.hpp"
+#include<iomanip>
 using namespace std;
 
 // unique payload struct that will be used as snapshot state
@@ -113,6 +114,7 @@ class StudentManager
         FileManager::SaveStudents(fileName, studentRecords);
     }
 
+    // linear search implemented
     Student* SearchByRollNo(int rollNo) // returns the address of that student
     {
         for(int i = 0; i < studentRecords.getSize(); i++)
@@ -195,6 +197,112 @@ class StudentManager
         cout<<"\nDepartment: " <<ptr->department;
         cout<<"\nCGPA: " <<ptr->cgpa;
         cout<<"\n===================================\n";
+    }
+
+    void DisplayAllStudents()
+    {
+        if(studentRecords.getSize() == 0)
+        {
+            cout<<"No students in the system.\n";
+            return;
+        }
+
+        cout<<"\n==================================================\n";
+        cout<<"           ALL STUDENTS IN SYSTEM                 \n";
+        cout<<"==================================================\n";
+        cout<<"Roll No | Name                | Department          | CGPA\n";
+        cout<<"--------------------------------------------------\n";
+
+        for(int i = 0; i < studentRecords.getSize(); i++)
+        {
+            Student& s = studentRecords.get(i);
+            cout.width(7);
+            cout<<left<<s.rollNo<<" | ";
+            
+            cout.width(19);
+            cout<<left<<s.name<<" | ";
+            
+            cout.width(19);
+            cout<<left<<s.department<<" | ";
+            
+            cout<<fixed;
+            cout.precision(2);
+            cout<<s.cgpa<<"\n";
+        }
+        cout<<"==================================================\n";
+    }
+
+    void BubbleSortByRollNo()
+    {
+        int n = studentRecords.getSize();
+        
+        if(n <= 1)
+        {
+            cout<<"\n[INFO] Not enough students to sort (need at least 2).\n";
+            return;
+        }
+
+        // Bubble Sort Algorithm
+        for(int i = 0; i < n - 1; i++)
+        {
+            bool swapped = false;
+            
+            for(int j = 0; j < n - i - 1; j++)
+            {   
+                if(studentRecords.get(j).rollNo > studentRecords.get(j + 1).rollNo)
+                {
+                    // Swap students
+                    Student temp = studentRecords.get(j);
+                    studentRecords.get(j) = studentRecords.get(j + 1);
+                    studentRecords.get(j + 1) = temp;
+                    
+                    swapped = true;
+                }
+            }
+            
+            // Optimization: if no swaps in this pass, array is sorted
+            if(!swapped)
+            {
+                cout<<"[OPTIMIZATION] Early termination at pass "<<(i+1)<<" - Array already sorted!\n";
+                break;
+            }
+        }
+    }
+
+    void SelectionSortByCGPA()
+    {
+        int n = studentRecords.getSize();
+        
+        if(n <= 1)
+        {
+            cout<<"\n[INFO] Not enough students to sort (need at least 2).\n";
+            return;
+        }
+        
+        // Selection Sort Algorithm (Descending order - highest CGPA first)
+        for(int i = 0; i < n - 1; i++)
+        {
+            int maxIndex = i;
+            
+            for(int j = i + 1; j < n; j++)
+            {   
+                // Find maximum CGPA (descending order)
+                if(studentRecords.get(j).cgpa > studentRecords.get(maxIndex).cgpa)
+                {
+                    maxIndex = j;
+                }
+            }
+            
+            // Swap if maximum is not at current position
+            if(maxIndex != i)
+            {
+                Student temp = studentRecords.get(i);
+                studentRecords.get(i) = studentRecords.get(maxIndex);
+                studentRecords.get(maxIndex) = temp;
+            }
+        }
+
+        cout<<"[INFO] Students sorted from HIGHEST to LOWEST CGPA\n";
     }
 
 };
